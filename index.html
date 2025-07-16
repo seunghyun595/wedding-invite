@@ -37,7 +37,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* 2. 히어로 오버레이 & 타이틀 그라데이션 */
+    /* 2. 히어로 오버레이 & 타이틀 */
     .hero {
       position: relative;
       background: url("https://seunghyun595.github.io/wedding-invite/img/cover.jpg") center/cover no-repeat;
@@ -50,16 +50,16 @@
       background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0));
       z-index: 0;
     }
-    .hero h1 {
-      background: linear-gradient(45deg, #d4af37, #3d7c47);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    /* viewport height fix */
+    /* 뷰포트 높이 보정 */
     :root { --vh: 1vh; }
     .hero {
       height: calc(var(--vh) * 100);
       min-height: 100svh;
+    }
+    .hero h1 {
+      /* 그라데이션 제거, 흰색 고정 */
+      color: #ffffff;
+      background: none;
     }
 
     /* 3. 감성 애니메이션 */
@@ -78,10 +78,10 @@
       margin: 1rem auto 2rem;
     }
 
-    /* 4. 그린 섹션 패턴 오버레이 */
+    /* 4. 그라데이션 섹션 배경 (도트 패턴 대신) */
     .green-bg {
-      background-color: #eef7f1;
-      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23d4eadd'/%3E%3C/svg%3E");
+      /* 위에서 아래로 은은한 그라데이션 */
+      background: linear-gradient(180deg, #eef7f1 0%, #ffffff 100%);
     }
 
     /* 5. 앱 아이콘 & 호버 이펙트 */
@@ -128,7 +128,6 @@
     <!-- ▣ 초대 -->
     <section class="fade-section green-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-2">초대합니다</h2>
-      <!-- SVG Divider -->
       <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12" stroke="#3d3d3d" stroke-width="1.5"/>
       </svg>
@@ -182,7 +181,7 @@
       </div>
     </section>
 
-    <!-- ▣ 마음 전하실 곳 -->
+    <!-- �▣ 마음 전하실 곳 -->
     <section class="fade-section py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-2">마음 전하실 곳</h2>
       <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
