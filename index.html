@@ -6,11 +6,15 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
 
+   <!-- 1) 폰트 프리커넥트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- 2) Google Font (Nanum Myeongjo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Font (Nanum Myeongjo) -->
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Open Graph -->
   <meta property="og:title"       content="오승현 ❤ 표지선 결혼합니다" />
@@ -63,9 +67,14 @@
     }
 
     /* ---------- 4. 앱 아이콘 스타일 업그레이드 ---------- */
-    .app-icon {
-      @apply h-10 w-10 rounded-xl shadow-lg border border-gray-300;
-    }
+    /* 기존 .app-icon 정의 대신 아래로 교체 */
+.app-icon {
+  width: 2.5rem;          /* h-10 */
+  height: 2.5rem;         /* w-10 */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* 약한 그림자 */
+  object-fit: cover;
+}
 
     /* 기타 유틸 */
     img {
