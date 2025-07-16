@@ -37,29 +37,23 @@
       letter-spacing: 0.02em;
     }
 
-    /* 2. 히어로 오버레이 & 타이틀 */
+    /* 2. 히어로 오버레이 */
+    :root { --vh: 1vh; }
     .hero {
       position: relative;
       background: url("https://seunghyun595.github.io/wedding-invite/img/cover.jpg") center/cover no-repeat;
+      height: calc(var(--vh)*100);
+      min-height: 100svh;
       overflow: hidden;
     }
     .hero::before {
       content: "";
-      position: absolute;
-      inset: 0;
+      position: absolute; inset:0;
       background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0));
       z-index: 0;
     }
-    /* 뷰포트 높이 보정 */
-    :root { --vh: 1vh; }
-    .hero {
-      height: calc(var(--vh) * 100);
-      min-height: 100svh;
-    }
     .hero h1 {
-      /* 그라데이션 제거, 흰색 고정 */
-      color: #ffffff;
-      background: none;
+      color: #fff; background: none;
     }
 
     /* 3. 감성 애니메이션 */
@@ -73,42 +67,54 @@
     }
 
     /* SVG 디바이더 */
-    .divider {
-      display: block;
-      margin: 1rem auto 2rem;
-    }
+    .divider { display:block; margin:1rem auto 2rem; }
 
-    /* 4. 그라데이션 섹션 배경 (도트 패턴 대신) */
-    .green-bg {
-      /* 위에서 아래로 은은한 그라데이션 */
-      background: linear-gradient(180deg, #eef7f1 0%, #ffffff 100%);
+    /* 4. 오시는 길 배경 */
+    .route-bg {
+      background: linear-gradient(180deg,
+        rgba(244,244,240,0.95) 0%,
+        rgba(244,244,240,0.7) 50%,
+        rgba(244,244,240,0.3) 100%);
     }
-
-    /* 5. 앱 아이콘 & 호버 이펙트 */
-    .app-icon {
-      width: 2.5rem; height: 2.5rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      object-fit: cover;
-      transition: transform 0.2s, box-shadow 0.2s;
+    /* 버튼 스타일 통일 */
+    .route-btn {
+      @apply bg-white p-3 rounded-lg shadow-md transition-transform transition-shadow;
     }
-    .app-icon:hover,
-    .copy-btn:hover,
-    button:hover {
-      transform: scale(1.03);
+    .route-btn:hover {
+      transform: scale(1.05);
       box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .route-btn span {
+      @apply block text-sm mt-1 text-gray-700;
+    }
+
+    /* 5. 앱 아이콘 */
+    .app-icon {
+      width:2rem; height:2rem;
+      object-fit:cover;
+    }
+
+    /* 6. 계좌 카드 */
+    .bank-card {
+      @apply flex justify-between items-center bg-white rounded-lg shadow-md p-4;
+    }
+    .bank-card + .bank-card {
+      margin-top: 1rem;
+    }
+    .bank-card .account {
+      @apply font-mono text-gray-800;
+    }
+    .bank-card button {
+      @apply text-gray-500 hover:text-gray-700;
+    }
+    .bank-card button:hover svg {
+      stroke: #374151;
     }
 
     /* 기타 유틸 */
-    img { display: block; max-width:100%; height:auto; }
-    details summary {
-      cursor:pointer; padding:1rem; background:#d4eadd; border-radius:.5rem; font-weight:bold;
-    }
-    details[open] summary { margin-bottom:.5rem; }
-    .copy-btn {
-      background:#e5e7eb; color:#374151; padding:.25rem .5rem; border-radius:.25rem;
-      font-size:.875rem; margin-left:.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
+    img { display:block; max-width:100%; height:auto; }
+    .copy-btn, button {
+      transition: transform .2s, box-shadow .2s;
     }
   </style>
 </head>
@@ -128,11 +134,13 @@
     <!-- ▣ 초대 -->
     <section class="fade-section green-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-2">초대합니다</h2>
-      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12" stroke="#3d3d3d" stroke-width="1.5"/>
+      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12"
+              stroke="#3d3d3d" stroke-width="1.5"/>
       </svg>
       <p class="max-w-xl mx-auto leading-relaxed text-lg">
-        두 사람이 하나 되어 사랑의 결실을 맺는 날<br />
+        두 사람이 하나 되어 사랑의 결실을 맺는 날<br/>
         귀한 걸음 하시어 축복해 주시면 큰 기쁨이겠습니다.
       </p>
       <div class="mt-6 max-w-sm mx-auto p-4 bg-white rounded-lg shadow">
@@ -143,26 +151,34 @@
     </section>
 
     <!-- ▣ 오시는 길 -->
-    <section class="fade-section py-20 px-6 text-center">
+    <section class="fade-section route-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-2">오시는 길</h2>
-      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12" stroke="#3d3d3d" stroke-width="1.5"/>
+      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12"
+              stroke="#3d3d3d" stroke-width="1.5"/>
       </svg>
       <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
-      <p class="mt-2">삼성 E&A 사옥<br />(서울 강동구 상일로6길 26)</p>
+      <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26)</p>
       <div class="mt-6 text-sm space-y-2">
         <p>* 상일동역 3번출구 도보 5분</p>
         <p>* 주차 가능</p>
       </div>
-      <div class="flex justify-center gap-4 mt-4">
-        <a href="tmap://search?name=서울 강동구 상일로6길 26" target="_blank">
-          <img src="img/tmap.svg" alt="티맵" class="app-icon" />
+      <div class="mt-8 flex justify-center gap-6">
+        <a href="tmap://search?name=서울 강동구 상일로6길 26" target="_blank"
+           class="route-btn">
+          <img src="img/tmap.svg" alt="티맵" class="app-icon mx-auto"/>
+          <span>티맵</span>
         </a>
-        <a href="https://naver.me/5grJJlo7" target="_blank">
-          <img src="img/naver.webp" alt="네이버지도" class="app-icon" />
+        <a href="https://naver.me/5grJJlo7" target="_blank"
+           class="route-btn">
+          <img src="img/naver.webp" alt="네이버지도" class="app-icon mx-auto"/>
+          <span>네이버</span>
         </a>
-        <a href="https://kko.kakao.com/qfMhpaccyo" target="_blank">
-          <img src="img/kakao.svg" alt="카카오맵" class="app-icon" />
+        <a href="https://kko.kakao.com/qfMhpaccyo" target="_blank"
+           class="route-btn">
+          <img src="img/kakao.svg" alt="카카오맵" class="app-icon mx-auto"/>
+          <span>카카오</span>
         </a>
       </div>
     </section>
@@ -170,32 +186,58 @@
     <!-- ▣ 포토 갤러리 -->
     <section class="fade-section green-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-2">포토 갤러리</h2>
-      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12" stroke="#3d3d3d" stroke-width="1.5"/>
+      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12"
+              stroke="#3d3d3d" stroke-width="1.5"/>
       </svg>
       <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
-        <img src="https://seunghyun595.github.io/wedding-invite/img/photo1.jpg" alt="사진1" class="rounded-xl shadow" />
-        <img src="https://seunghyun595.github.io/wedding-invite/img/photo2.jpg" alt="사진2" class="rounded-xl shadow" />
-        <img src="https://seunghyun595.github.io/wedding-invite/img/photo3.jpg" alt="사진3" class="rounded-xl shadow" />
-        <img src="https://seunghyun595.github.io/wedding-invite/img/photo4.jpg" alt="사진4" class="rounded-xl shadow" />
+        <img src="https://seunghyun595.github.io/wedding-invite/img/photo1.jpg" alt="사진1"
+             class="rounded-xl shadow"/>
+        <img src="https://seunghyun595.github.io/wedding-invite/img/photo2.jpg" alt="사진2"
+             class="rounded-xl shadow"/>
+        <img src="https://seunghyun595.github.io/wedding-invite/img/photo3.jpg" alt="사진3"
+             class="rounded-xl shadow"/>
+        <img src="https://seunghyun595.github.io/wedding-invite/img/photo4.jpg" alt="사진4"
+             class="rounded-xl shadow"/>
       </div>
     </section>
 
-    <!-- �▣ 마음 전하실 곳 -->
+    <!-- ▣ 마음 전하실 곳 -->
     <section class="fade-section py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-2">마음 전하실 곳</h2>
-      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12" stroke="#3d3d3d" stroke-width="1.5"/>
+      <svg class="divider" width="120" height="24" viewBox="0 0 120 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 12C24 0 36 24 48 12C60 0 72 24 84 12C96 0 108 24 120 12"
+              stroke="#3d3d3d" stroke-width="1.5"/>
       </svg>
-      <div class="max-w-md mx-auto text-left">
-        <details>
-          <summary>신랑측 – 오승현</summary>
-          <p class="mt-2">농협 000-00-000000 <button class="copy-btn" onclick="copyToClipboard('농협 000-00-000000')">복사</button></p>
-        </details>
-        <details>
-          <summary>신부측 – 표지선</summary>
-          <p class="mt-2">국민은행 111-11-111111 <button class="copy-btn" onclick="copyToClipboard('국민은행 111-11-111111')">복사</button></p>
-        </details>
+      <div class="max-w-md mx-auto">
+        <div class="bank-card">
+          <div>신랑측 – 오승현</div>
+          <div class="flex items-center space-x-2">
+            <span class="account">농협 000-00-000000</span>
+            <button onclick="copyToClipboard('농협 000-00-000000')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7h8M8 11h8m-8 4h8M5 5h14v14H5z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="bank-card">
+          <div>신부측 – 표지선</div>
+          <div class="flex items-center space-x-2">
+            <span class="account">국민은행 111-11-111111</span>
+            <button onclick="copyToClipboard('국민은행 111-11-111111')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7h8M8 11h8m-8 4h8M5 5h14v14H5z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -203,38 +245,48 @@
     <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm">
       <p>오승현 ❤ 표지선</p>
       <p>2026.03.21 토요일 오전 11시</p>
-      <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">
+      <button onclick="shareLink()" class="mt-4 px-6 py-2 bg-emerald-100 text-emerald-800 rounded-full shadow-md">
         링크 공유하기
       </button>
     </footer>
   </main>
 
   <script>
-    // Hero 높이(카카오·iOS fix)
+    // Hero 높이(모바일 뷰포트 잡아주기)
     const setVh = () => document.documentElement.style.setProperty('--vh', window.innerHeight/100);
-    setVh(); window.addEventListener('orientationchange', setVh, false);
+    setVh(); window.addEventListener('orientationchange', setVh);
 
     // D-Day 계산
     document.addEventListener('DOMContentLoaded', () => {
       const today = new Date(); today.setHours(0,0,0,0);
       const target = new Date('2026-03-21');
       const dday = Math.ceil((target - today)/(1000*60*60*24));
-      document.getElementById('dday').textContent = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
+      document.getElementById('dday').textContent = `결혼식까지 ${dday>=0?dday:0}일`;
     });
 
-    // IntersectionObserver scroll-in
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      e.target.classList.toggle('visible', e.isIntersecting);
-    }), { threshold: 0.15 });
+    // Scroll-in Animation
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.target.classList.toggle('visible', e.isIntersecting));
+    }, { threshold: 0.15 });
     document.querySelectorAll('.fade-section').forEach(s => io.observe(s));
 
-    // 공유 & 복사
+    // 링크 공유
     function shareLink() {
-      const data = { title: '오승현 ❤ 표지선 결혼식', text: '우리의 결혼식에 초대합니다!', url: location.href };
-      if (navigator.share) navigator.share(data);
-      else { navigator.clipboard.writeText(data.url); alert('링크가 복사되었습니다!'); }
+      if (navigator.share) {
+        navigator.share({
+          title: '오승현 ❤ 표지선 결혼식',
+          text: '우리의 결혼식에 초대합니다!',
+          url: location.href
+        });
+      }
     }
-    const copyToClipboard = t => navigator.clipboard.writeText(t).then(() => alert('복사되었습니다: '+t));
+
+    // 클립보드 복사
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('복사되었습니다: ' + text);
+      });
+    }
   </script>
 </body>
 </html>
