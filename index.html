@@ -1,4 +1,8 @@
-<!-- 📁 root/index.html --><!DOCTYPE html><html lang="ko"><head>
+<!-- 📁 root/index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
@@ -8,26 +12,29 @@
     body {
       font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
       background-color: #fffdf8;
-    }.section {
-  padding: 3rem 1.5rem;
-  text-align: center;
-}
+    }
 
-.form-input {
-  @apply w-full px-4 py-2 border border-gray-300 rounded;
-}
+    .section {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
 
-.btn-primary {
-  @apply bg-rose-600 text-white py-2 px-6 rounded-full hover:bg-rose-700 transition;
-}
+    .form-input {
+      @apply w-full px-4 py-2 border border-gray-300 rounded;
+    }
 
-.highlight {
-  color: #b91c1c;
-  font-weight: bold;
-}
+    .btn-primary {
+      @apply bg-rose-600 text-white py-2 px-6 rounded-full hover:bg-rose-700 transition;
+    }
 
+    .highlight {
+      color: #b91c1c;
+      font-weight: bold;
+    }
   </style>
-</head><body class="text-gray-800">
+</head>
+
+<body class="text-gray-800">
   <div class="relative">
     <img src="img/cover.jpg" alt="커플 사진" class="w-full h-[500px] object-cover brightness-75" />
     <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
@@ -35,7 +42,9 @@
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
       <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
     </div>
-  </div>  <section class="section bg-[#fffaf0]">
+  </div>
+
+  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
     <p class="max-w-xl mx-auto leading-relaxed text-lg">
       두 사람이 하나 되어 사랑의 결실을 맺는 날<br />
@@ -45,11 +54,15 @@
       <p>신랑: 오승현 (부모님: ㅇㅇㅇ · ㅇㅇㅇ)</p>
       <p>신부: 표지선 (부모님: ㅇㅇㅇ · ㅇㅇㅇ)</p>
     </div>
-  </section>  <section class="section">
+  </section>
+
+  <section class="section">
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p>2026년 3월 21일 토요일 오전 11시</p>
     <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
-  </section>  <section class="section bg-[#fffaf0]">
+  </section>
+
+  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-2">D-Day</h2>
     <p id="dday" class="text-3xl font-bold text-rose-600">Loading...</p>
     <script>
@@ -58,7 +71,9 @@
       const dday = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
       document.getElementById("dday").innerText = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
     </script>
-  </section>  <section class="section">
+  </section>
+
+  <section class="section">
     <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
     <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
       <img src="img/photo1.jpg" class="rounded-xl shadow" />
@@ -66,7 +81,9 @@
       <img src="img/photo3.jpg" class="rounded-xl shadow" />
       <img src="img/photo4.jpg" class="rounded-xl shadow" />
     </div>
-  </section>  <section class="section bg-[#fffaf0]">
+  </section>
+
+  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-4">오시는 길</h2>
     <p class="text-lg">삼성 E&A 사옥 (서울 강동구 상일로6길 26)</p>
     <div class="mt-4 space-y-2 text-sm">
@@ -78,7 +95,9 @@
         <a href="https://tmap.co.kr/tmap2/mobile/main.do" target="_blank" class="btn-primary">티맵</a>
       </div>
     </div>
-  </section>  <section class="section">
+  </section>
+
+  <section class="section">
     <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
     <div class="text-left max-w-sm mx-auto text-sm leading-relaxed space-y-2">
       <p><span class="highlight">신랑</span> 오승현: 농협 000-00-000000</p>
@@ -88,7 +107,9 @@
       <p><span class="highlight">신부 아버지</span>: 하나은행 444-44-444444</p>
       <p><span class="highlight">신부 어머니</span>: 기업은행 555-55-555555</p>
     </div>
-  </section>  <section class="section bg-[#fffaf0]">
+  </section>
+
+  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-4">참석 여부 회신</h2>
     <p class="text-sm text-gray-500 mb-6">아래 양식을 통해 참석 여부를 알려주세요.</p>
     <form id="rsvpForm" class="space-y-4 max-w-md mx-auto text-left">
@@ -109,26 +130,29 @@
       const form = document.getElementById("rsvpForm");
       form.addEventListener("submit", e => {
         e.preventDefault();
-        const formData = new FormData(form);// 중복 방지용 키 생성
-    const name = formData.get("name").trim();
-    const phone = formData.get("phone").trim();
-    const uniqueKey = `${name}_${phone}`;
+        const formData = new FormData(form);
 
-    formData.append("key", uniqueKey);
+        // 중복 방지용 키 생성
+        const name = formData.get("name").trim();
+        const phone = formData.get("phone").trim();
+        const uniqueKey = `${name}_${phone}`;
 
-    fetch(scriptUrl, {
-      method: "POST",
-      body: formData,
-    })
-      .then(() => {
-        document.getElementById("thanks").classList.remove("hidden");
-        form.reset();
-      })
-      .catch(() => alert("제출에 실패했습니다. 다시 시도해주세요."));
-  });
-</script>
+        formData.append("key", uniqueKey);
 
-  </section>  <footer class="section text-gray-600 text-sm">
+        fetch(scriptUrl, {
+          method: "POST",
+          body: formData,
+        })
+          .then(() => {
+            document.getElementById("thanks").classList.remove("hidden");
+            form.reset();
+          })
+          .catch(() => alert("제출에 실패했습니다. 다시 시도해주세요."));
+      });
+    </script>
+  </section>
+
+  <footer class="section text-gray-600 text-sm">
     <p>오승현 ❤ 표지선</p>
     <p>2026.03.21 토요일 오전 11시</p>
     <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-gray-200 rounded-full">링크 공유하기</button>
@@ -148,4 +172,6 @@
       }
     </script>
   </footer>
-</body></html>
+</body>
+
+</html>
