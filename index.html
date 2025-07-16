@@ -1,24 +1,43 @@
-<!-- 📁 root/index.html --><!DOCTYPE html><html lang="ko">
-<head>
+<!-- 📁 root/index.html --><!DOCTYPE html><html lang="ko"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
-    .section { @apply py-12 px-6 text-center; }
+    body {
+      font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
+      background-color: #fffdf8;
+    }.section {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.form-input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded;
+}
+
+.btn-primary {
+  @apply bg-rose-600 text-white py-2 px-6 rounded-full hover:bg-rose-700 transition;
+}
+
+.highlight {
+  color: #b91c1c;
+  font-weight: bold;
+}
+
   </style>
-</head>
-<body class="bg-white text-gray-800">  <div class="relative">
+</head><body class="text-gray-800">
+  <div class="relative">
     <img src="img/cover.jpg" alt="커플 사진" class="w-full h-[500px] object-cover brightness-75" />
     <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-      <h1 class="text-4xl font-bold mb-2">오승현 ❤ 표지선</h1>
-      <p class="text-xl">2026.03.21 SAT AM 11:00</p>
-      <p class="text-sm mt-2">삼성 E&A 사옥 웨딩홀</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">오승현 ❤ 표지선</h1>
+      <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
+      <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
     </div>
-  </div>  <section class="section bg-gray-50">
+  </div>  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
-    <p class="max-w-xl mx-auto leading-relaxed">
+    <p class="max-w-xl mx-auto leading-relaxed text-lg">
       두 사람이 하나 되어 사랑의 결실을 맺는 날<br />
       귀한 걸음 하시어 축복해 주시면 큰 기쁨이겠습니다.
     </p>
@@ -30,9 +49,9 @@
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p>2026년 3월 21일 토요일 오전 11시</p>
     <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
-  </section>  <section class="section bg-gray-50">
+  </section>  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-2">D-Day</h2>
-    <p id="dday" class="text-3xl font-bold text-pink-600">Loading...</p>
+    <p id="dday" class="text-3xl font-bold text-rose-600">Loading...</p>
     <script>
       const weddingDate = new Date("2026-03-21T11:00:00");
       const today = new Date();
@@ -47,34 +66,42 @@
       <img src="img/photo3.jpg" class="rounded-xl shadow" />
       <img src="img/photo4.jpg" class="rounded-xl shadow" />
     </div>
-  </section>  <section class="section bg-gray-50">
+  </section>  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-4">오시는 길</h2>
-    <p>삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26)</p>
-    <p class="text-sm mt-2">* 상일동역 3번출구 도보 5분<br/>* 주차 가능</p>
-    <a href="https://map.naver.com/p/entry/place/37719774?c=15.00,0,0,0,dh" target="_blank" class="mt-4 inline-block px-4 py-2 bg-pink-600 text-white rounded-full">네이버지도 열기</a>
+    <p class="text-lg">삼성 E&A 사옥 (서울 강동구 상일로6길 26)</p>
+    <div class="mt-4 space-y-2 text-sm">
+      <p>* 상일동역 3번출구 도보 5분</p>
+      <p>* 주차 가능</p>
+      <div class="flex flex-col md:flex-row justify-center gap-3 mt-4">
+        <a href="https://map.kakao.com/?q=삼성+E%26A+사옥" target="_blank" class="btn-primary">카카오맵</a>
+        <a href="https://map.naver.com/p/entry/place/37719774" target="_blank" class="btn-primary">네이버지도</a>
+        <a href="https://tmap.co.kr/tmap2/mobile/main.do" target="_blank" class="btn-primary">티맵</a>
+      </div>
+    </div>
   </section>  <section class="section">
     <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
     <div class="text-left max-w-sm mx-auto text-sm leading-relaxed space-y-2">
-      <p><strong>신랑</strong> 오승현: 농협 000-00-000000</p>
-      <p><strong>신부</strong> 표지선: 국민은행 111-11-111111</p>
-      <p><strong>신랑 아버지</strong>: 신한은행 222-22-222222</p>
-      <p><strong>신랑 어머니</strong>: 우리은행 333-33-333333</p>
-      <p><strong>신부 아버지</strong>: 하나은행 444-44-444444</p>
-      <p><strong>신부 어머니</strong>: 기업은행 555-55-555555</p>
+      <p><span class="highlight">신랑</span> 오승현: 농협 000-00-000000</p>
+      <p><span class="highlight">신부</span> 표지선: 국민은행 111-11-111111</p>
+      <p><span class="highlight">신랑 아버지</span>: 신한은행 222-22-222222</p>
+      <p><span class="highlight">신랑 어머니</span>: 우리은행 333-33-333333</p>
+      <p><span class="highlight">신부 아버지</span>: 하나은행 444-44-444444</p>
+      <p><span class="highlight">신부 어머니</span>: 기업은행 555-55-555555</p>
     </div>
-  </section>  <section class="section bg-gray-50">
+  </section>  <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-4">참석 여부 회신</h2>
     <p class="text-sm text-gray-500 mb-6">아래 양식을 통해 참석 여부를 알려주세요.</p>
     <form id="rsvpForm" class="space-y-4 max-w-md mx-auto text-left">
-      <input type="text" name="name" placeholder="이름" required class="w-full px-4 py-2 border rounded" />
-      <input type="text" name="phone" placeholder="전화번호 끝 4자리" pattern="\d{4}" required class="w-full px-4 py-2 border rounded" />
-      <select name="attendance" required class="w-full px-4 py-2 border rounded">
+      <input type="text" name="name" placeholder="이름" required class="form-input" />
+      <input type="text" name="phone" placeholder="전화번호 끝 4자리" pattern="\d{4}" required class="form-input" />
+      <input type="number" name="headcount" placeholder="참석 인원 (예: 1)" min="1" required class="form-input" />
+      <select name="attendance" required class="form-input">
         <option value="">참석 여부 선택</option>
         <option value="참석">참석</option>
         <option value="불참">불참</option>
         <option value="미정">미정</option>
       </select>
-      <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded">응답 보내기</button>
+      <button type="submit" class="btn-primary w-full">응답 보내기</button>
     </form>
     <p id="thanks" class="text-green-600 mt-4 hidden">응답이 제출되었습니다. 감사합니다!</p>
     <script>
@@ -82,15 +109,25 @@
       const form = document.getElementById("rsvpForm");
       form.addEventListener("submit", e => {
         e.preventDefault();
-        const formData = new FormData(form);
-        fetch(scriptUrl, { method: "POST", body: formData })
-          .then(() => {
-            document.getElementById("thanks").classList.remove("hidden");
-            form.reset();
-          })
-          .catch(() => alert("제출에 실패했습니다. 다시 시도해주세요."));
-      });
-    </script>
+        const formData = new FormData(form);// 중복 방지용 키 생성
+    const name = formData.get("name").trim();
+    const phone = formData.get("phone").trim();
+    const uniqueKey = `${name}_${phone}`;
+
+    formData.append("key", uniqueKey);
+
+    fetch(scriptUrl, {
+      method: "POST",
+      body: formData,
+    })
+      .then(() => {
+        document.getElementById("thanks").classList.remove("hidden");
+        form.reset();
+      })
+      .catch(() => alert("제출에 실패했습니다. 다시 시도해주세요."));
+  });
+</script>
+
   </section>  <footer class="section text-gray-600 text-sm">
     <p>오승현 ❤ 표지선</p>
     <p>2026.03.21 토요일 오전 11시</p>
@@ -110,5 +147,5 @@
         }
       }
     </script>
-  </footer></body>
-</html>
+  </footer>
+</body></html>
