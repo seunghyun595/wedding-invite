@@ -1,16 +1,23 @@
-<!-- 📁 root/index.html -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ Preconnect 및 폰트 로딩 최적화 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    body {
-      font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
+    html, body {
+      font-family: 'Playfair Display', 'Noto Sans KR', sans-serif !important;
       background-color: #fffdf8;
+      margin: 0;
+      padding: 0;
     }
     .section {
       padding: 3rem 1.5rem;
@@ -23,11 +30,13 @@
     img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
   </style>
 </head>
 
 <body class="text-gray-800">
+  <!-- 커버 이미지 -->
   <div class="relative">
     <img src="img/cover.jpg" alt="커플 사진" class="w-full h-[500px] object-cover brightness-75" />
     <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
@@ -37,6 +46,7 @@
     </div>
   </div>
 
+  <!-- 초대 문구 -->
   <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
     <p class="max-w-xl mx-auto leading-relaxed text-lg">
@@ -49,6 +59,7 @@
     </div>
   </section>
 
+  <!-- 웨딩 본식 + 오시는 길 -->
   <section class="section">
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
@@ -59,22 +70,20 @@
       <p>* 주차 가능</p>
 
       <div class="flex justify-center gap-4 mt-3">
-        <a href="https://map.naver.com/v5/directions/-/14129870.7,4505450.2,삼성E&A사옥,,ADDRESS?c=15,0,0,0,dh"
-           target="_blank">
-           <img src="img/naver.png" alt="네이버지도" class="h-10 w-10" />
+        <a href="https://map.naver.com/v5/directions/-/14129870.7,4505450.2,삼성E&A사옥,,ADDRESS?c=15,0,0,0,dh" target="_blank">
+          <img src="img/naver.png" alt="네이버지도" class="h-10 w-10" />
         </a>
-        <a href="https://apis.openapi.sk.com/tmap/app/routes?appKey=YOUR_APP_KEY&name=삼성E&A사옥&lon=127.128322&lat=37.556123"
-           target="_blank">
-           <img src="img/tmap.png" alt="티맵" class="h-10 w-10" />
+        <a href="https://apis.openapi.sk.com/tmap/app/routes?appKey=YOUR_APP_KEY&name=삼성E&A사옥&lon=127.128322&lat=37.556123" target="_blank">
+          <img src="img/tmap.png" alt="티맵" class="h-10 w-10" />
         </a>
-        <a href="https://map.kakao.com/link/to/삼성E&A사옥,37.556123,127.128322"
-           target="_blank">
-           <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10" />
+        <a href="https://map.kakao.com/link/to/삼성E&A사옥,37.556123,127.128322" target="_blank">
+          <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10" />
         </a>
       </div>
     </div>
   </section>
 
+  <!-- D-Day -->
   <section class="section bg-[#fffaf0]">
     <h2 class="text-2xl font-semibold mb-2">D-Day</h2>
     <p id="dday" class="text-3xl font-bold text-rose-600">Loading...</p>
@@ -86,6 +95,7 @@
     </script>
   </section>
 
+  <!-- 포토 갤러리 -->
   <section class="section">
     <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
     <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
@@ -96,6 +106,7 @@
     </div>
   </section>
 
+  <!-- 계좌 안내 -->
   <section class="section">
     <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
     <div class="text-left max-w-sm mx-auto text-sm leading-relaxed space-y-2">
@@ -108,6 +119,7 @@
     </div>
   </section>
 
+  <!-- 푸터 + 공유 -->
   <footer class="section text-gray-600 text-sm">
     <p>오승현 ❤ 표지선</p>
     <p>2026.03.21 토요일 오전 11시</p>
