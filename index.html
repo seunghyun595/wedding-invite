@@ -138,61 +138,64 @@
     <p>2026.03.21 토요일 오전 11시</p>
     <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">링크 공유하기</button>
   </footer>
-
-  <script>
-    const weddingDate = new Date("2026-03-21T00:00:00");
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const dday = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
+<script>
+  const weddingDate = new Date("2026-03-21T00:00:00");
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const dday = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
+  document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("dday").innerText = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
+    handleScroll(); // 초기 로드 시 호출
+  });
 
-    let lastScroll = window.scrollY;
-    const fadeSections = document.querySelectorAll('.fade-section');
+  let lastScroll = window.scrollY;
+  const fadeSections = document.querySelectorAll('.fade-section');
 
-    function handleScroll() {
-      const currentScroll = window.scrollY;
-      const directionDown = currentScroll > lastScroll;
-      lastScroll = currentScroll;
+  function handleScroll() {
+    const currentScroll = window.scrollY;
+    const directionDown = currentScroll > lastScroll;
+    lastScroll = currentScroll;
 
-      fadeSections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    fadeSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
 
-        if (inView) {
-          section.classList.add('visible');
-          section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-          section.style.transform = 'translateY(0)';
-        } else {
-          section.classList.remove('visible');
-          section.style.transition = 'none';
-          section.style.opacity = 0;
-          section.style.transform = `translateY(${directionDown ? 60 : -60}px)`;
-        }
-      });
-    }
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('load', handleScroll);
-
-    function shareLink() {
-      const shareData = {
-        title: '오승현 ❤ 표지선 결혼식',
-        text: '우리의 결혼식에 초대합니다!',
-        url: window.location.href
-      };
-      if (navigator.share) {
-        navigator.share(shareData);
+      if (inView) {
+        section.classList.add('visible');
+        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        section.style.transform = 'translateY(0)';
       } else {
-        navigator.clipboard.writeText(window.location.href);
-        alert("링크가 복사되었습니다!");
+        section.classList.remove('visible');
+        section.style.transition = 'none';
+        section.style.opacity = 0;
+        section.style.transform = `translateY(${directionDown ? 60 : -60}px)`;
       }
-    }
+    });
+  }
 
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert("복사되었습니다: " + text);
-      });
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('DOMContentLoaded', handleScroll);
+
+  function shareLink() {
+    const shareData = {
+      title: '오승현 ❤ 표지선 결혼식',
+      text: '우리의 결혼식에 초대합니다!',
+      url: window.location.href
+    };
+    if (navigator.share) {
+      navigator.share(shareData);
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("링크가 복사되었습니다!");
     }
-  </script>
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("복사되었습니다: " + text);
+    });
+  }
+</script>
+  
 </body>
 </html>
