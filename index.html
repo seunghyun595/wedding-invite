@@ -1,7 +1,6 @@
 <!-- 📁 root/index.html -->
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,23 +12,17 @@
       font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
       background-color: #fffdf8;
     }
-
     .section {
       padding: 3rem 1.5rem;
       text-align: center;
     }
-
-    .form-input {
-      @apply w-full px-4 py-2 border border-gray-300 rounded;
-    }
-
-    .btn-primary {
-      @apply bg-rose-600 text-white py-2 px-6 rounded-full hover:bg-rose-700 transition;
-    }
-
     .highlight {
       color: #b91c1c;
       font-weight: bold;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -37,8 +30,8 @@
 <body class="text-gray-800">
   <div class="relative">
     <img src="img/cover.jpg" alt="커플 사진" class="w-full h-[500px] object-cover brightness-75" />
-    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-2">오승현 ❤ 표지선</h1>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
       <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
     </div>
@@ -58,31 +51,28 @@
 
   <section class="section">
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
-    <p>2026년 3월 21일 토요일 오전 11시</p>
+    <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
     <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
-    <!-- ▼ 추가 시작 -->
-<div class="mt-6 space-y-2 text-sm">
-  <p>* 상일동역 3번출구 도보 5분</p>
-  <p>* 주차 가능</p>
 
-  <!-- 네비 1×3 아이콘 링크 -->
-  <div class="flex justify-center gap-3 mt-3">
-    <a href="https://map.naver.com/v5/directions/-/14129870.7,4505450.2,삼성E&A사옥,,ADDRESS?c=15,0,0,0,dh"
-       target="_blank">
-       <img src="img/naver.png" alt="네이버지도" class="h-10 w-10"/>
-    </a>
-    <a href="https://apis.openapi.sk.com/tmap/app/routes?appKey=YOUR_APP_KEY&name=삼성E&A사옥&lon=127.128322&lat=37.556123"
-       target="_blank">
-       <img src="img/tmap.png" alt="티맵" class="h-10 w-10"/>
-    </a>
-    <a href="https://map.kakao.com/link/to/삼성E&A사옥,37.556123,127.128322"
-       target="_blank">
-       <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10"/>
-    </a>
-  </div>
-</div>
-<!-- ▲ 추가 끝 -->
-    
+    <div class="mt-6 space-y-2 text-sm">
+      <p>* 상일동역 3번출구 도보 5분</p>
+      <p>* 주차 가능</p>
+
+      <div class="flex justify-center gap-4 mt-3">
+        <a href="https://map.naver.com/v5/directions/-/14129870.7,4505450.2,삼성E&A사옥,,ADDRESS?c=15,0,0,0,dh"
+           target="_blank">
+           <img src="img/naver.png" alt="네이버지도" class="h-10 w-10" />
+        </a>
+        <a href="https://apis.openapi.sk.com/tmap/app/routes?appKey=YOUR_APP_KEY&name=삼성E&A사옥&lon=127.128322&lat=37.556123"
+           target="_blank">
+           <img src="img/tmap.png" alt="티맵" class="h-10 w-10" />
+        </a>
+        <a href="https://map.kakao.com/link/to/삼성E&A사옥,37.556123,127.128322"
+           target="_blank">
+           <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10" />
+        </a>
+      </div>
+    </div>
   </section>
 
   <section class="section bg-[#fffaf0]">
@@ -98,7 +88,7 @@
 
   <section class="section">
     <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
-    <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
+    <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
       <img src="img/photo1.jpg" class="rounded-xl shadow" />
       <img src="img/photo2.jpg" class="rounded-xl shadow" />
       <img src="img/photo3.jpg" class="rounded-xl shadow" />
@@ -116,59 +106,6 @@
       <p><span class="highlight">신부 아버지</span>: 하나은행 444-44-444444</p>
       <p><span class="highlight">신부 어머니</span>: 기업은행 555-55-555555</p>
     </div>
-  </section>
-
-  <section class="section bg-[#fffaf0]">
-    <h2 class="text-2xl font-semibold mb-4">참석 여부 회신</h2>
-    <p class="text-sm text-gray-500 mb-6">아래 양식을 통해 참석 여부를 알려주세요.</p>
-    <form id="rsvpForm" class="space-y-4 max-w-md mx-auto text-left">
-      <input type="text" name="name" placeholder="이름" required class="form-input" />
-      <input type="text" name="phone" placeholder="전화번호 끝 4자리" pattern="\d{4}" required class="form-input" />
-      <input type="number" name="headcount" placeholder="참석 인원 (예: 1)" min="1" required class="form-input" />
-      <select name="attendance" required class="form-input">
-        <option value="">참석 여부 선택</option>
-        <option value="참석">참석</option>
-        <option value="불참">불참</option>
-        <option value="미정">미정</option>
-      </select>
-      <button type="submit" class="btn-primary w-full">응답 보내기</button>
-    </form>
-    <p id="thanks" class="text-green-600 mt-4 hidden">응답이 제출되었습니다. 감사합니다!</p>
-<script>
-  const scriptUrl =
-    "https://script.google.com/macros/s/AKfycbyOVbdam833nmF-FQTkF_SHPwriQUBkZmGFKuuAMuNqibAn8pC3BZJe0XHUXzF4lNg/exec";
-
-  document.getElementById("rsvpForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const payload = {
-      name:       e.target.name.value.trim(),
-      phoneLast4: e.target.phone.value.trim(),
-      attendance: e.target.attendance.value,
-      guests:     e.target.headcount.value || "1",
-      key:        `${e.target.name.value.trim()}_${e.target.phone.value.trim()}`
-    };
-
-    try {
-      const res = await fetch(scriptUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-
-      const result = await res.json();
-      if (result.status === "success") {
-        document.getElementById("thanks").classList.remove("hidden");
-        e.target.reset();
-      } else {
-        alert("제출 오류가 발생했습니다. 다시 시도해주세요.");
-      }
-    } catch {
-      alert("네트워크 오류로 제출에 실패했습니다.");
-    }
-  });
-</script>
-    
   </section>
 
   <footer class="section text-gray-600 text-sm">
@@ -192,5 +129,4 @@
     </script>
   </footer>
 </body>
-
 </html>
