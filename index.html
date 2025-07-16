@@ -1,8 +1,11 @@
 <!-- 📁 root/index.html --><!DOCTYPE html><html lang="ko">
+<!-- 📁 root/index.html -->
+<!DOCTYPE html><html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>오승현 ❤ 표지선 결혼합니다</title>  <!-- ✅ 폰트 & 스타일 -->  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <title>오승현 ❤ 표지선 결혼합니다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@500;700&display=swap" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +21,7 @@
     .fade-section {
       opacity: 0;
       transform: translateY(60px);
-      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .fade-section.visible {
       opacity: 1;
@@ -47,8 +50,8 @@
       margin-bottom: 0.5rem;
     }
     .copy-btn {
-      background-color: #e5e7eb; /* gray-200 */
-      color: #374151; /* gray-700 */
+      background-color: #e5e7eb;
+      color: #374151;
       padding: 0.25rem 0.5rem;
       border-radius: 0.25rem;
       font-size: 0.875rem;
@@ -56,6 +59,7 @@
     }
   </style>
 </head>
+  
 <body class="overflow-x-hidden">
   <!-- 💍 커버 -->
   <div class="relative h-screen flex justify-center items-center">
@@ -123,32 +127,42 @@
     <p>오승현 ❤ 표지선</p>
     <p>2026.03.21 토요일 오전 11시</p>
     <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">링크 공유하기</button>
-  </footer>  <!-- ✅ JS -->  <script>
-    // D-Day 계산
+  </footer> 
+  <!-- ✅ JS -->
+  <script>
     const weddingDate = new Date("2026-03-21T11:00:00");
     const today = new Date();
     const dday = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
     document.getElementById("dday").innerText = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
 
-    // Scroll-in 애니메이션 (다시 나타나게)
-    const sections = document.querySelectorAll('.fade-section');
-    let lastScrollY = window.scrollY;
-    window.addEventListener('scroll', () => {
-      const currentY = window.scrollY;
-      const isScrollingDown = currentY > lastScrollY;
-      lastScrollY = currentY;
-      sections.forEach(section => {
+    let lastScroll = window.scrollY;
+    const fadeSections = document.querySelectorAll('.fade-section');
+
+    function handleScroll() {
+      const currentScroll = window.scrollY;
+      const directionDown = currentScroll > lastScroll;
+      lastScroll = currentScroll;
+
+      fadeSections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (inView) {
           section.classList.add('visible');
+          section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          section.style.transform = 'translateY(0)';
         } else {
           section.classList.remove('visible');
-          section.style.transform = `translateY(${isScrollingDown ? 60 : -60}px)`;
+          section.style.transition = 'none';
+          section.style.opacity = 0;
+          section.style.transform = `translateY(${directionDown ? 60 : -60}px)`;
         }
       });
-    });
+    }
 
-    // 공유 버튼
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('load', handleScroll);
+
     function shareLink() {
       const shareData = {
         title: '오승현 ❤ 표지선 결혼식',
@@ -163,11 +177,11 @@
       }
     }
 
-    // 복사 기능
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
         alert("복사되었습니다: " + text);
       });
     }
-  </script></body>
+  </script>
+</body>
 </html>
