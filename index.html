@@ -1,20 +1,14 @@
-<!-- 📁 root/index.html -->
-<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html><html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>오승현 ❤ 표지선 결혼합니다</title>
-
-  <!-- ✅ 폰트 & 스타일 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <title>오승현 ❤ 표지선 결혼합니다</title>  <!-- ✅ 폰트 & 스타일 -->  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@500;700&display=swap" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body {
-      font-family: 'Playfair Display', 'Nanum Myeongjo',
-        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Playfair Display', 'Nanum Myeongjo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: #f9fdfb;
       color: #2f3e30;
       margin: 0;
@@ -44,20 +38,14 @@
     }
   </style>
 </head>
-<body class="overflow-x-hidden">
-
-  <!-- 💍 커버 -->
-  <div class="relative h-screen flex justify-center items-center">
+<body class="overflow-x-hidden">  <!-- 💍 커버 -->  <div class="relative h-screen flex justify-center items-center">
     <img src="img/cover.jpg" alt="커플 사진" class="absolute inset-0 w-full h-full object-cover brightness-75 z-0" />
     <div class="relative z-10 text-center text-white px-4">
       <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
       <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
     </div>
-  </div>
-
-  <!-- ✅ 본문 섹션 -->
-  <section class="fade-section green-bg py-20 px-6 text-center">
+  </div>  <!-- ✅ 본문 섹션 -->  <section class="fade-section green-bg py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
     <p class="max-w-xl mx-auto leading-relaxed text-lg">
       두 사람이 하나 되어 사랑의 결실을 맺는 날<br/>
@@ -67,9 +55,7 @@
       <p>신랑: 오승현 (부모님: ㅇㅇㅇ · ㅇㅇㅇ)</p>
       <p>신부: 표지선 (부모님: ㅇㅇㅇ · ㅇㅇㅇ)</p>
     </div>
-  </section>
-
-  <section class="fade-section py-20 px-6 text-center">
+  </section>  <section class="fade-section py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
     <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
@@ -88,14 +74,10 @@
         <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10" />
       </a>
     </div>
-  </section>
-
-  <section class="fade-section green-bg py-20 px-6 text-center">
+  </section>  <section class="fade-section green-bg py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-2">D-Day</h2>
     <p id="dday" class="text-3xl font-bold text-emerald-700">Loading...</p>
-  </section>
-
-  <section class="fade-section py-20 px-6 text-center">
+  </section>  <section class="fade-section py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
     <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
       <img src="img/photo1.jpg" class="rounded-xl shadow" />
@@ -103,9 +85,7 @@
       <img src="img/photo3.jpg" class="rounded-xl shadow" />
       <img src="img/photo4.jpg" class="rounded-xl shadow" />
     </div>
-  </section>
-
-  <section class="fade-section green-bg py-20 px-6 text-center">
+  </section>  <section class="fade-section green-bg py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
     <div class="text-left max-w-sm mx-auto text-sm leading-relaxed space-y-2">
       <p><span class="highlight">신랑</span> 오승현: 농협 000-00-000000</p>
@@ -115,16 +95,11 @@
       <p><span class="highlight">신부 아버지</span>: 하나은행 444-44-444444</p>
       <p><span class="highlight">신부 어머니</span>: 기업은행 555-55-555555</p>
     </div>
-  </section>
-
-  <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm">
+  </section>  <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm">
     <p>오승현 ❤ 표지선</p>
     <p>2026.03.21 토요일 오전 11시</p>
     <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">링크 공유하기</button>
-  </footer>
-
-  <!-- ✅ JS: D-Day & scroll-in effect -->
-  <script>
+  </footer>  <!-- ✅ JS: D-Day & scroll-in effect -->  <script>
     // D-Day 계산
     const weddingDate = new Date("2026-03-21T11:00:00");
     const today = new Date();
@@ -159,6 +134,5 @@
         alert("링크가 복사되었습니다!");
       }
     }
-  </script>
-</body>
+  </script></body>
 </html>
