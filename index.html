@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko">
+<!-- 📁 root/index.html --><!DOCTYPE html><html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,6 +36,24 @@
     .green-bg {
       background-color: #eef7f1;
     }
+    details summary {
+      cursor: pointer;
+      padding: 1rem;
+      background-color: #d4eadd;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+    details[open] summary {
+      margin-bottom: 0.5rem;
+    }
+    .copy-btn {
+      background-color: #a7f3d0;
+      color: #065f46;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      margin-left: 0.5rem;
+    }
   </style>
 </head>
 <body class="overflow-x-hidden">  <!-- 💍 커버 -->  <div class="relative h-screen flex justify-center items-center">
@@ -45,17 +63,17 @@
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
       <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
     </div>
-  </div>  <!-- ✅ 본문 섹션 -->  <section class="fade-section green-bg py-20 px-6 text-center">
+  </div>  <!-- ✅ 초대합니다 -->  <section class="fade-section green-bg py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
     <p class="max-w-xl mx-auto leading-relaxed text-lg">
-      두 사람이 하나 되어 사랑의 결실을 맺는 날<br/>
+      두 사람이 하나 되어 사랑의 결실을 맺는 날<br />
       귀한 걸음 하시어 축복해 주시면 큰 기쁨이겠습니다.
     </p>
-    <div class="mt-6 text-sm text-gray-600">
-      <p>신랑: 오승현 (부모님: ㅇㅇㅇ · ㅇㅇㅇ)</p>
-      <p>신부: 표지선 (부모님: ㅇㅇㅇ · ㅇㅇㅇ)</p>
+    <div class="mt-6 max-w-sm mx-auto p-4 bg-white rounded-lg shadow">
+      <p>ㅇㅇㅇ, ㅇㅇㅇ의 장남 <strong>오승현</strong></p>
+      <p>ㅇㅇㅇ, ㅇㅇㅇ의 장녀 <strong>표지선</strong></p>
     </div>
-  </section>  <section class="fade-section py-20 px-6 text-center">
+  </section>  <!-- ✅ 웨딩 본식 -->  <section class="fade-section py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
     <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
@@ -74,10 +92,7 @@
         <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10" />
       </a>
     </div>
-  </section>  <section class="fade-section green-bg py-20 px-6 text-center">
-    <h2 class="text-2xl font-semibold mb-2">D-Day</h2>
-    <p id="dday" class="text-3xl font-bold text-emerald-700">Loading...</p>
-  </section>  <section class="fade-section py-20 px-6 text-center">
+  </section>  <!-- ✅ 포토 갤러리 -->  <section class="fade-section green-bg py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
     <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
       <img src="img/photo1.jpg" class="rounded-xl shadow" />
@@ -85,27 +100,27 @@
       <img src="img/photo3.jpg" class="rounded-xl shadow" />
       <img src="img/photo4.jpg" class="rounded-xl shadow" />
     </div>
-  </section>  <section class="fade-section green-bg py-20 px-6 text-center">
+  </section>  <!-- ✅ 마음 전하실 곳 -->  <section class="fade-section py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
-    <div class="text-left max-w-sm mx-auto text-sm leading-relaxed space-y-2">
-      <p><span class="highlight">신랑</span> 오승현: 농협 000-00-000000</p>
-      <p><span class="highlight">신부</span> 표지선: 국민은행 111-11-111111</p>
-      <p><span class="highlight">신랑 아버지</span>: 신한은행 222-22-222222</p>
-      <p><span class="highlight">신랑 어머니</span>: 우리은행 333-33-333333</p>
-      <p><span class="highlight">신부 아버지</span>: 하나은행 444-44-444444</p>
-      <p><span class="highlight">신부 어머니</span>: 기업은행 555-55-555555</p>
+    <div class="max-w-md mx-auto space-y-4 text-left">
+      <details>
+        <summary>신랑측 - 오승현</summary>
+        <p>오승현: 농협 000-00-000000 <button class="copy-btn" onclick="copyToClipboard('농협 000-00-000000')">복사</button></p>
+        <p>신랑 아버지: 신한은행 222-22-222222 <button class="copy-btn" onclick="copyToClipboard('신한은행 222-22-222222')">복사</button></p>
+        <p>신랑 어머니: 우리은행 333-33-333333 <button class="copy-btn" onclick="copyToClipboard('우리은행 333-33-333333')">복사</button></p>
+      </details>
+      <details>
+        <summary>신부측 - 표지선</summary>
+        <p>표지선: 국민은행 111-11-111111 <button class="copy-btn" onclick="copyToClipboard('국민은행 111-11-111111')">복사</button></p>
+        <p>신부 아버지: 하나은행 444-44-444444 <button class="copy-btn" onclick="copyToClipboard('하나은행 444-44-444444')">복사</button></p>
+        <p>신부 어머니: 기업은행 555-55-555555 <button class="copy-btn" onclick="copyToClipboard('기업은행 555-55-555555')">복사</button></p>
+      </details>
     </div>
   </section>  <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm">
     <p>오승현 ❤ 표지선</p>
     <p>2026.03.21 토요일 오전 11시</p>
     <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">링크 공유하기</button>
-  </footer>  <!-- ✅ JS: D-Day & scroll-in effect -->  <script>
-    // D-Day 계산
-    const weddingDate = new Date("2026-03-21T11:00:00");
-    const today = new Date();
-    const dday = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
-    document.getElementById("dday").innerText = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
-
+  </footer>  <!-- ✅ JS -->  <script>
     // Scroll-in 애니메이션
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -133,6 +148,13 @@
         navigator.clipboard.writeText(window.location.href);
         alert("링크가 복사되었습니다!");
       }
+    }
+
+    // 복사 기능
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("복사되었습니다: " + text);
+      });
     }
   </script></body>
 </html>
