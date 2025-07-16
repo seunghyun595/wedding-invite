@@ -6,38 +6,49 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- OG -->
-  <meta property="og:title" content="오승현 ❤ 표지선 결혼합니다" />
+  <!-- Open Graph -->
+  <meta property="og:title"       content="오승현 ❤ 표지선 결혼합니다" />
   <meta property="og:description" content="2026.03.21 SAT AM 11:00 삼성 E&A 사옥" />
-  <meta property="og:image"
-        content="https://seunghyun595.github.io/wedding-invite/img/cover.jpg" />
-  <meta property="og:url"   content="https://seunghyun595.github.io/wedding-invite" />
+  <meta property="og:image"       content="https://seunghyun595.github.io/wedding-invite/img/cover.jpg" />
+  <meta property="og:url"         content="https://seunghyun595.github.io/wedding-invite" />
 
   <style>
-    html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"맑은 고딕","Malgun Gothic",sans-serif;
-              background:#f9fdfb;color:#2f3e30;margin:0;padding:0;scroll-behavior:smooth}
-    .fade-section{opacity:0;transform:translateY(60px);
-                  transition:opacity .8s ease,transform .8s ease;will-change:opacity,transform}
-    .fade-section.visible{opacity:1;transform:none}
-    img{display:block;max-width:100%;height:auto}
-    .green-bg{background:#eef7f1}
-    details summary{cursor:pointer;padding:1rem;background:#d4eadd;border-radius:.5rem;font-weight:bold}
-    details[open] summary{margin-bottom:.5rem}
-    .copy-btn{background:#e5e7eb;color:#374151;padding:.25rem .5rem;border-radius:.25rem;font-size:.875rem;margin-left:.5rem}
+  /* ---------- 기본 ---------- */
+  html,body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,
+                "맑은 고딕","Malgun Gothic",sans-serif;
+    background:#f9fdfb;color:#2f3e30;margin:0;padding:0;scroll-behavior:smooth}
+  img{display:block;max-width:100%;height:auto}
+  .green-bg{background:#eef7f1}
+
+  /* ---------- scroll-in ---------- */
+  .fade-section{opacity:0;transform:translateY(60px);
+                transition:opacity .8s ease,transform .8s ease;will-change:opacity,transform}
+  .fade-section.visible{opacity:1;transform:none}
+
+  /* ---------- 기타 ---------- */
+  details summary{cursor:pointer;padding:1rem;background:#d4eadd;border-radius:.5rem;font-weight:bold}
+  details[open] summary{margin-bottom:.5rem}
+  .copy-btn{background:#e5e7eb;color:#374151;padding:.25rem .5rem;border-radius:.25rem;
+            font-size:.875rem;margin-left:.5rem}
+  /* ---------- hero 높이 고정(주소창 변화 무시) ---------- */
+  .hero{
+    min-height:100svh;          /* 실제 화면 높이 고정 */
+    min-height:100vh;           /* Fallback */
+    background:url("https://seunghyun595.github.io/wedding-invite/img/cover.jpg") center/cover no-repeat;
+  }
   </style>
 </head>
 
 <body class="overflow-x-hidden">
 
-  <!-- Cover -->
-  <header class="relative min-h-[100dvh] flex justify-center items-center overflow-hidden">
-    <img src="https://seunghyun595.github.io/wedding-invite/img/cover.jpg"
-         alt="커플 사진"
-         class="absolute inset-0 w-full h-full object-cover brightness-75 pointer-events-none z-0" />
-    <div class="relative z-10 text-center text-white px-4">
+  <!-- ▣ Cover ------------------------------------------------------------ -->
+  <header class="hero relative flex items-center justify-center overflow-hidden">
+    <!-- 이미지가 배경으로 들어가므로 별도 <img> 없음 -->
+    <div class="relative z-10 text-center text-white px-4 pointer-events-none">
       <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
       <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
@@ -45,7 +56,7 @@
   </header>
 
   <main>
-    <!-- 초대 -->
+    <!-- ▣ 초대 ----------------------------------------------------------- -->
     <section class="fade-section green-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
       <p class="max-w-xl mx-auto leading-relaxed text-lg">
@@ -59,7 +70,7 @@
       <p id="dday" class="mt-6 text-xl font-bold text-emerald-700">Loading...</p>
     </section>
 
-    <!-- 본식 -->
+    <!-- ▣ 본식 ----------------------------------------------------------- -->
     <section class="fade-section py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
       <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
@@ -77,7 +88,7 @@
       </div>
     </section>
 
-    <!-- 갤러리 -->
+    <!-- ▣ 갤러리 --------------------------------------------------------- -->
     <section class="fade-section green-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
       <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
@@ -88,61 +99,59 @@
       </div>
     </section>
 
-    <!-- 계좌 -->
+    <!-- ▣ 계좌 ----------------------------------------------------------- -->
     <section class="fade-section py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
       <div class="max-w-md mx-auto space-y-4 text-left">
         <details><summary>신랑측 - 오승현</summary>
-          <p class="mb-2">오승현: 농협 000-00-000000
-            <button class="copy-btn" onclick="copyToClipboard('농협 000-00-000000')">복사</button></p>
-          <p class="mb-2">신랑 아버지: 신한은행 222-22-222222
-            <button class="copy-btn" onclick="copyToClipboard('신한은행 222-22-222222')">복사</button></p>
-          <p class="mb-2">신랑 어머니: 우리은행 333-33-333333
-            <button class="copy-btn" onclick="copyToClipboard('우리은행 333-33-333333')">복사</button></p>
+          <p class="mb-2">오승현: 농협 000-00-000000 <button class="copy-btn"
+            onclick="copyToClipboard('농협 000-00-000000')">복사</button></p>
+          <p class="mb-2">신랑 아버지: 신한은행 222-22-222222 <button class="copy-btn"
+            onclick="copyToClipboard('신한은행 222-22-222222')">복사</button></p>
+          <p class="mb-2">신랑 어머니: 우리은행 333-33-333333 <button class="copy-btn"
+            onclick="copyToClipboard('우리은행 333-33-333333')">복사</button></p>
         </details>
         <details><summary>신부측 - 표지선</summary>
-          <p class="mb-2">표지선: 국민은행 111-11-111111
-            <button class="copy-btn" onclick="copyToClipboard('국민은행 111-11-111111')">복사</button></p>
-          <p class="mb-2">신부 아버지: 하나은행 444-44-444444
-            <button class="copy-btn" onclick="copyToClipboard('하나은행 444-44-444444')">복사</button></p>
-          <p class="mb-2">신부 어머니: 기업은행 555-55-555555
-            <button class="copy-btn" onclick="copyToClipboard('기업은행 555-55-555555')">복사</button></p>
+          <p class="mb-2">표지선: 국민은행 111-11-111111 <button class="copy-btn"
+            onclick="copyToClipboard('국민은행 111-11-111111')">복사</button></p>
+          <p class="mb-2">신부 아버지: 하나은행 444-44-444444 <button class="copy-btn"
+            onclick="copyToClipboard('하나은행 444-44-444444')">복사</button></p>
+          <p class="mb-2">신부 어머니: 기업은행 555-55-555555 <button class="copy-btn"
+            onclick="copyToClipboard('기업은행 555-55-555555')">복사</button></p>
         </details>
       </div>
     </section>
 
-    <!-- 푸터 -->
+    <!-- ▣ 푸터 ----------------------------------------------------------- -->
     <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm">
       <p>오승현 ❤ 표지선</p><p>2026.03.21 토요일 오전 11시</p>
-      <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">링크 공유하기</button>
+      <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">
+        링크 공유하기</button>
     </footer>
   </main>
 
   <script>
-    /* D-Day */
-    const weddingDate=new Date('2026-03-21T00:00:00');
-    document.addEventListener('DOMContentLoaded',()=>{
-      const today=new Date();today.setHours(0,0,0,0);
-      const dday=Math.ceil((weddingDate-today)/(1000*60*60*24));
-      document.getElementById('dday').textContent=`결혼식까지 ${dday>=0?dday:0}일`;
-    });
+  /* D-Day */
+  document.addEventListener('DOMContentLoaded',()=>{
+    const today=new Date();today.setHours(0,0,0,0);
+    const d=Math.ceil((new Date('2026-03-21')-today)/864e5);
+    document.getElementById('dday').textContent=`결혼식까지 ${d>=0?d:0}일`;
+  });
 
-    /* Scroll-in */
-    const fadeSections=document.querySelectorAll('.fade-section');
-    const io=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        e.target.classList.toggle('visible',e.isIntersecting);
-      });
-    },{threshold:.15});
-    fadeSections.forEach(s=>io.observe(s));
+  /* Scroll-in */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    e.target.classList.toggle('visible',e.isIntersecting);
+  }),{threshold:.15});
+  document.querySelectorAll('.fade-section').forEach(s=>io.observe(s));
 
-    /* 공유 */
-    function shareLink(){
-      const data={title:'오승현 ❤ 표지선 결혼식',text:'우리의 결혼식에 초대합니다!',url:location.href};
-      navigator.share?navigator.share(data):(navigator.clipboard.writeText(data.url),alert('링크가 복사되었습니다!'));
-    }
-    /* 복사 */
-    const copyToClipboard=t=>navigator.clipboard.writeText(t).then(()=>alert('복사되었습니다: '+t));
+  /* 공유·복사 */
+  function shareLink(){
+    const data={title:'오승현 ❤ 표지선 결혼식',
+                text:'우리의 결혼식에 초대합니다!',url:location.href};
+    navigator.share?navigator.share(data):
+      (navigator.clipboard.writeText(data.url),alert('링크가 복사되었습니다!'));
+  }
+  const copyToClipboard=t=>navigator.clipboard.writeText(t).then(()=>alert('복사되었습니다: '+t));
   </script>
 </body>
 </html>
