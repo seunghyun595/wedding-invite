@@ -2,27 +2,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>오승현 ❤ 표지선 결혼합니다</title>  <!-- ✅ 고급스러운 초록 계열 폰트 적용 -->  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <!-- ✅ Google Fonts 연결 (CORS 포함) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@500;700&display=swap"
-  rel="stylesheet"
-  crossorigin="anonymous"
-/>
-  
-  <script src="https://cdn.tailwindcss.com"></script> 
+  <title>오승현 ❤ 표지선 결혼합니다</title>
+
+  <!-- ✅ 폰트 최적화: preload + fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@500;700&display=swap">
+  </noscript>
+
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body {
-  font-family: 'Nanum Myeongjo', 'Playfair Display',
-    -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  background-color: #f9fdfb;
-  margin: 0;
-  padding: 0;
-  color: #2f3e30;
-}
+      font-family: 'Playfair Display', 'Nanum Myeongjo',
+        -apple-system, BlinkMacSystemFont,
+        'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f9fdfb;
+      margin: 0;
+      padding: 0;
+      color: #2f3e30;
     .section {
       padding: 3rem 1.5rem;
       text-align: center;
