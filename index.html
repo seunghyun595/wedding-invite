@@ -63,13 +63,15 @@
 </head>
 <body class="overflow-x-hidden">
   <div class="relative h-screen flex justify-center items-center">
-    <img src="img/cover.jpg" alt="커플 사진" class="absolute inset-0 w-full h-full object-cover brightness-75 z-0" />
+    <img src="img/cover.jpg" alt="커플 사진" class="absolute inset-0 w-full h-full object-cover brightness-75" style="z-index: -1;" />
     <div class="relative z-10 text-center text-white px-4">
       <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
       <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
     </div>
-  </div>  <section class="fade-section green-bg py-20 px-6 text-center">
+  </div>
+
+  <section class="fade-section green-bg py-20 px-6 text-center relative">
     <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
     <p class="max-w-xl mx-auto leading-relaxed text-lg">
       두 사람이 하나 되어 사랑의 결실을 맺는 날<br />
@@ -80,7 +82,9 @@
       <p>ㅇㅇㅇ, ㅇㅇㅇ의 장녀 <strong>표지선</strong></p>
     </div>
     <p id="dday" class="mt-6 text-xl text-emerald-700 font-bold">Loading...</p>
-  </section>  <section class="fade-section py-20 px-6 text-center">
+  </section>
+
+  <section class="fade-section py-20 px-6 text-center relative">
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
     <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
@@ -99,7 +103,9 @@
         <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10" />
       </a>
     </div>
-  </section>  <section class="fade-section green-bg py-20 px-6 text-center">
+  </section>
+
+  <section class="fade-section green-bg py-20 px-6 text-center relative">
     <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
     <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
       <img src="img/photo1.jpg" alt="사진1" class="rounded-xl shadow" />
@@ -107,7 +113,9 @@
       <img src="img/photo3.jpg" alt="사진3" class="rounded-xl shadow" />
       <img src="img/photo4.jpg" alt="사진4" class="rounded-xl shadow" />
     </div>
-  </section>  <section class="fade-section py-20 px-6 text-center">
+  </section>
+
+  <section class="fade-section py-20 px-6 text-center relative">
     <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
     <div class="max-w-md mx-auto space-y-4 text-left">
       <details>
@@ -123,11 +131,15 @@
         <p class="mb-2">신부 어머니: 기업은행 555-55-555555 <button class="copy-btn" onclick="copyToClipboard('기업은행 555-55-555555')">복사</button></p>
       </details>
     </div>
-  </section>  <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm">
+  </section>
+
+  <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm relative">
     <p>오승현 ❤ 표지선</p>
     <p>2026.03.21 토요일 오전 11시</p>
     <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">링크 공유하기</button>
-  </footer>  <script>
+  </footer>
+
+  <script>
     const weddingDate = new Date("2026-03-21T00:00:00");
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -181,5 +193,6 @@
         alert("복사되었습니다: " + text);
       });
     }
-  </script></body>
+  </script>
+</body>
 </html>
