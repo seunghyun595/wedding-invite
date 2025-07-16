@@ -60,6 +60,29 @@
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p>2026년 3월 21일 토요일 오전 11시</p>
     <p class="mt-2">삼성 E&A 사옥<br/>(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
+    <!-- ▼ 추가 시작 -->
+<div class="mt-6 space-y-2 text-sm">
+  <p>* 상일동역 3번출구 도보 5분</p>
+  <p>* 주차 가능</p>
+
+  <!-- 네비 1×3 아이콘 링크 -->
+  <div class="flex justify-center gap-3 mt-3">
+    <a href="https://map.naver.com/v5/directions/-/14129870.7,4505450.2,삼성E&A사옥,,ADDRESS?c=15,0,0,0,dh"
+       target="_blank">
+       <img src="img/naver.png" alt="네이버지도" class="h-10 w-10"/>
+    </a>
+    <a href="https://apis.openapi.sk.com/tmap/app/routes?appKey=YOUR_APP_KEY&name=삼성E&A사옥&lon=127.128322&lat=37.556123"
+       target="_blank">
+       <img src="img/tmap.png" alt="티맵" class="h-10 w-10"/>
+    </a>
+    <a href="https://map.kakao.com/link/to/삼성E&A사옥,37.556123,127.128322"
+       target="_blank">
+       <img src="img/kakao.png" alt="카카오맵" class="h-10 w-10"/>
+    </a>
+  </div>
+</div>
+<!-- ▲ 추가 끝 -->
+    
   </section>
 
   <section class="section bg-[#fffaf0]">
@@ -80,20 +103,6 @@
       <img src="img/photo2.jpg" class="rounded-xl shadow" />
       <img src="img/photo3.jpg" class="rounded-xl shadow" />
       <img src="img/photo4.jpg" class="rounded-xl shadow" />
-    </div>
-  </section>
-
-  <section class="section bg-[#fffaf0]">
-    <h2 class="text-2xl font-semibold mb-4">오시는 길</h2>
-    <p class="text-lg">삼성 E&A 사옥 (서울 강동구 상일로6길 26)</p>
-    <div class="mt-4 space-y-2 text-sm">
-      <p>* 상일동역 3번출구 도보 5분</p>
-      <p>* 주차 가능</p>
-      <div class="flex flex-col md:flex-row justify-center gap-3 mt-4">
-        <a href="https://map.kakao.com/?q=삼성+E%26A+사옥" target="_blank" class="btn-primary">카카오맵</a>
-        <a href="https://map.naver.com/p/entry/place/37719774" target="_blank" class="btn-primary">네이버지도</a>
-        <a href="https://tmap.co.kr/tmap2/mobile/main.do" target="_blank" class="btn-primary">티맵</a>
-      </div>
     </div>
   </section>
 
@@ -125,31 +134,41 @@
       <button type="submit" class="btn-primary w-full">응답 보내기</button>
     </form>
     <p id="thanks" class="text-green-600 mt-4 hidden">응답이 제출되었습니다. 감사합니다!</p>
-    <script>
-      const scriptUrl = "https://script.google.com/macros/s/AKfycbyOVbdam833nmF-FQTkF_SHPwriQUBkZmGFKuuAMuNqibAn8pC3BZJe0XHUXzF4lNg/exec";
-      const form = document.getElementById("rsvpForm");
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        const formData = new FormData(form);
+<script>
+  const scriptUrl =
+    "https://script.google.com/macros/s/AKfycbyOVbdam833nmF-FQTkF_SHPwriQUBkZmGFKuuAMuNqibAn8pC3BZJe0XHUXzF4lNg/exec";
 
-        // 중복 방지용 키 생성
-        const name = formData.get("name").trim();
-        const phone = formData.get("phone").trim();
-        const uniqueKey = `${name}_${phone}`;
+  document.getElementById("rsvpForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        formData.append("key", uniqueKey);
+    const payload = {
+      name:       e.target.name.value.trim(),
+      phoneLast4: e.target.phone.value.trim(),
+      attendance: e.target.attendance.value,
+      guests:     e.target.headcount.value || "1",
+      key:        `${e.target.name.value.trim()}_${e.target.phone.value.trim()}`
+    };
 
-        fetch(scriptUrl, {
-          method: "POST",
-          body: formData,
-        })
-          .then(() => {
-            document.getElementById("thanks").classList.remove("hidden");
-            form.reset();
-          })
-          .catch(() => alert("제출에 실패했습니다. 다시 시도해주세요."));
+    try {
+      const res = await fetch(scriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
       });
-    </script>
+
+      const result = await res.json();
+      if (result.status === "success") {
+        document.getElementById("thanks").classList.remove("hidden");
+        e.target.reset();
+      } else {
+        alert("제출 오류가 발생했습니다. 다시 시도해주세요.");
+      }
+    } catch {
+      alert("네트워크 오류로 제출에 실패했습니다.");
+    }
+  });
+</script>
+    
   </section>
 
   <footer class="section text-gray-600 text-sm">
