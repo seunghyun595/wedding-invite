@@ -17,12 +17,12 @@
     }
     .fade-section {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform: translateY(60px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
     }
     .fade-section.visible {
       opacity: 1;
-      transform: none;
+      transform: translateY(0);
     }
     .highlight {
       color: #3d7c47;
@@ -47,8 +47,8 @@
       margin-bottom: 0.5rem;
     }
     .copy-btn {
-      background-color: #a7f3d0;
-      color: #065f46;
+      background-color: #e5e7eb; /* gray-200 */
+      color: #374151; /* gray-700 */
       padding: 0.25rem 0.5rem;
       border-radius: 0.25rem;
       font-size: 0.875rem;
@@ -56,7 +56,9 @@
     }
   </style>
 </head>
-<body class="overflow-x-hidden">  <!-- 💍 커버 -->  <div class="relative h-screen flex justify-center items-center">
+<body class="overflow-x-hidden">
+  <!-- 💍 커버 -->
+  <div class="relative h-screen flex justify-center items-center">
     <img src="img/cover.jpg" alt="커플 사진" class="absolute inset-0 w-full h-full object-cover brightness-75 z-0" />
     <div class="relative z-10 text-center text-white px-4">
       <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
@@ -73,6 +75,7 @@
       <p>ㅇㅇㅇ, ㅇㅇㅇ의 장남 <strong>오승현</strong></p>
       <p>ㅇㅇㅇ, ㅇㅇㅇ의 장녀 <strong>표지선</strong></p>
     </div>
+    <p id="dday" class="mt-6 text-xl text-emerald-700 font-bold">Loading...</p>
   </section>  <!-- ✅ 웨딩 본식 -->  <section class="fade-section py-20 px-6 text-center">
     <h2 class="text-2xl font-semibold mb-4">웨딩 본식</h2>
     <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
@@ -121,18 +124,28 @@
     <p>2026.03.21 토요일 오전 11시</p>
     <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">링크 공유하기</button>
   </footer>  <!-- ✅ JS -->  <script>
-    // Scroll-in 애니메이션
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+    // D-Day 계산
+    const weddingDate = new Date("2026-03-21T11:00:00");
+    const today = new Date();
+    const dday = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
+    document.getElementById("dday").innerText = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
+
+    // Scroll-in 애니메이션 (다시 나타나게)
+    const sections = document.querySelectorAll('.fade-section');
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      const isScrollingDown = currentY > lastScrollY;
+      lastScrollY = currentY;
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          section.classList.add('visible');
+        } else {
+          section.classList.remove('visible');
+          section.style.transform = `translateY(${isScrollingDown ? 60 : -60}px)`;
         }
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-section').forEach(section => {
-      observer.observe(section);
     });
 
     // 공유 버튼
