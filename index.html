@@ -6,55 +6,110 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
 
-  <!-- Tailwind -->
+  <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- OG -->
+  <!-- Google Font (Nanum Myeongjo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Open Graph -->
   <meta property="og:title"       content="오승현 ❤ 표지선 결혼합니다" />
   <meta property="og:description" content="2026.03.21 SAT AM 11:00 삼성 E&A 사옥" />
   <meta property="og:image"       content="https://seunghyun595.github.io/wedding-invite/img/cover.jpg" />
   <meta property="og:url"         content="https://seunghyun595.github.io/wedding-invite" />
 
   <style>
-  /* ---------- 기본 ---------- */
-  html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"맑은 고딕","Malgun Gothic",sans-serif;
-            background:#f9fdfb;color:#2f3e30;margin:0;padding:0;scroll-behavior:smooth}
-  img{display:block;max-width:100%;height:auto}
-  .green-bg{background:#eef7f1}
+    /* ---------- 1. 타이포그래피 & 컬러 테마 ---------- */
+    html, body {
+      font-family: 'Nanum Myeongjo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+                   "Helvetica Neue", Arial, "맑은 고딕", "Malgun Gothic", sans-serif;
+      background-color: #f4f4f0;      /* 톤다운된 베이지 */
+      color: #333333;                 /* 부드러운 진회색 */
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
 
-  /* ---------- scroll-in ---------- */
-  .fade-section{opacity:0;transform:translateY(60px);
-                transition:opacity .8s ease,transform .8s ease;will-change:opacity,transform}
-  .fade-section.visible{opacity:1;transform:none}
+    /* ---------- 2. 히어로 오버레이 ---------- */
+    .hero {
+      position: relative;
+      background: url("https://seunghyun595.github.io/wedding-invite/img/cover.jpg") center/cover no-repeat;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0));
+      z-index: 0;
+    }
+    /* viewport height fix */
+    :root { --vh: 1vh; }
+    .hero {
+      height: calc(var(--vh) * 100);
+      min-height: 100svh;
+    }
 
-  /* ---------- 기타 ---------- */
-  details summary{cursor:pointer;padding:1rem;background:#d4eadd;border-radius:.5rem;font-weight:bold}
-  details[open] summary{margin-bottom:.5rem}
-  .copy-btn{background:#e5e7eb;color:#374151;padding:.25rem .5rem;border-radius:.25rem;
-            font-size:.875rem;margin-left:.5rem}
+    /* ---------- 3. 단계별 감성 애니메이션 ---------- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-section {
+      opacity: 0;
+    }
+    .fade-section.visible {
+      animation: fadeUp 0.8s ease-out forwards;
+    }
 
-  /* ---------- hero 높이 : 실제 뷰포트 고정 ---------- */
-  :root{ --vh:1vh; }               /* 초기값(지원 안하는 브라우저 대비) */
-  .hero{height:calc(var(--vh)*100);           /* 모든 브라우저에서 고정 */
-        min-height:100svh;                    /* 지원 브라우저 → 소형 뷰포트 */
-        background:url("https://seunghyun595.github.io/wedding-invite/img/cover.jpg")
-                   center/cover no-repeat;}
+    /* ---------- 4. 앱 아이콘 스타일 업그레이드 ---------- */
+    .app-icon {
+      @apply h-10 w-10 rounded-xl shadow-lg border border-gray-300;
+    }
+
+    /* 기타 유틸 */
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    .green-bg {
+      background-color: #eef7f1;
+    }
+    details summary {
+      cursor: pointer;
+      padding: 1rem;
+      background-color: #d4eadd;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+    details[open] summary {
+      margin-bottom: 0.5rem;
+    }
+    .copy-btn {
+      background-color: #e5e7eb;
+      color: #374151;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      margin-left: 0.5rem;
+    }
   </style>
 </head>
 
 <body class="overflow-x-hidden">
 
-  <!-- ▣ Cover ------------------------------------------------------------ -->
-  <header class="hero relative flex items-center justify-center overflow-hidden">
-    <div class="absolute top-12 left-0 right-0 z-10 text-center text-white px-4 pointer-events-none">
-      <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
+  <!-- ▣ Cover -->
+  <header class="hero flex items-center justify-center">
+    <div class="relative z-10 text-center text-white px-4 pointer-events-none">
+      <h1 class="text-4xl md:text-5xl font-bold drop-shadow mb-2">오승현 ❤ 표지선</h1>
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
       <p class="text-sm mt-1">삼성 E&A 사옥 웨딩홀</p>
     </div>
   </header>
 
   <main>
-    <!-- ▣ 초대 ----------------------------------------------------------- -->
+    <!-- ▣ 초대 -->
     <section class="fade-section green-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">초대합니다</h2>
       <p class="max-w-xl mx-auto leading-relaxed text-lg">
@@ -68,30 +123,29 @@
       <p id="dday" class="mt-6 text-xl font-bold text-emerald-700">Loading...</p>
     </section>
 
-    <!-- ▣ 본식 ----------------------------------------------------------- -->
+    <!-- ▣ 오시는 길 -->
     <section class="fade-section py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">오시는 길</h2>
       <p class="text-lg">2026년 3월 21일 토요일 오전 11시</p>
-      <p class="mt-2">삼성 E&A 사옥<br />(서울 강동구 상일로6길 26, 구 삼성엔지니어링)</p>
+      <p class="mt-2">삼성 E&A 사옥<br />(서울 강동구 상일로6길 26)</p>
       <div class="mt-6 text-sm space-y-2">
-        <p>* 상일동역 3번출구 도보 5분</p><p>* 주차 가능</p>
+        <p>* 상일동역 3번출구 도보 5분</p>
+        <p>* 주차 가능</p>
       </div>
-      <!-- 변경 전 순서: 네이버 → 카카오 → 티맵 -->
-<!-- 변경 후 순서: 티맵 → 네이버 → 카카오 -->
-<div class="flex justify-center gap-4 mt-4">
-  <a href="tmap://search?name=서울 강동구 상일로6길 26">
-    <img src="img/tmap.svg" alt="티맵" class="h-10 w-10 rounded-lg shadow-md" />
-  </a>
- <a href="https://naver.me/5grJJlo7">
-    <img src="img/naver.webp" alt="네이버지도" class="h-10 w-10 rounded-lg shadow-md" />
-  </a>
- <a href="https://kko.kakao.com/qfMhpaccyo">
-    <img src="img/kakao.svg" alt="카카오맵" class="h-10 w-10 rounded-lg shadow-md" />
-  </a>
-</div>
+      <div class="flex justify-center gap-4 mt-4">
+        <a href="tmap://search?name=서울 강동구 상일로6길 26" target="_blank">
+          <img src="img/tmap.svg" alt="티맵" class="app-icon" />
+        </a>
+        <a href="https://naver.me/5grJJlo7" target="_blank">
+          <img src="img/naver.webp" alt="네이버지도" class="app-icon" />
+        </a>
+        <a href="https://kko.kakao.com/qfMhpaccyo" target="_blank">
+          <img src="img/kakao.svg" alt="카카오맵" class="app-icon" />
+        </a>
+      </div>
     </section>
 
-    <!-- ▣ 갤러리 --------------------------------------------------------- -->
+    <!-- ▣ 포토 갤러리 -->
     <section class="fade-section green-bg py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">포토 갤러리</h2>
       <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
@@ -102,62 +156,61 @@
       </div>
     </section>
 
-    <!-- ▣ 계좌 ----------------------------------------------------------- -->
+    <!-- ▣ 마음 전하실 곳 -->
     <section class="fade-section py-20 px-6 text-center">
       <h2 class="text-2xl font-semibold mb-4">마음 전하실 곳</h2>
       <div class="max-w-md mx-auto space-y-4 text-left">
-        <details><summary>신랑측 - 오승현</summary>
-          <p class="mb-2">오승현: 농협 000-00-000000 <button class="copy-btn"
-            onclick="copyToClipboard('농협 000-00-000000')">복사</button></p>
-          <p class="mb-2">신랑 아버지: 신한은행 222-22-222222 <button class="copy-btn"
-            onclick="copyToClipboard('신한은행 222-22-222222')">복사</button></p>
-          <p class="mb-2">신랑 어머니: 우리은행 333-33-333333 <button class="copy-btn"
-            onclick="copyToClipboard('우리은행 333-33-333333')">복사</button></p>
+        <details>
+          <summary>신랑측 – 오승현</summary>
+          <p class="mb-2">오승현: 농협 000-00-000000 <button class="copy-btn" onclick="copyToClipboard('농협 000-00-000000')">복사</button></p>
+          <p class="mb-2">신랑 아버지: 신한은행 222-22-222222 <button class="copy-btn" onclick="copyToClipboard('신한은행 222-22-222222')">복사</button></p>
+          <p class="mb-2">신랑 어머니: 우리은행 333-33-333333 <button class="copy-btn" onclick="copyToClipboard('우리은행 333-33-333333')">복사</button></p>
         </details>
-        <details><summary>신부측 - 표지선</summary>
-          <p class="mb-2">표지선: 국민은행 111-11-111111 <button class="copy-btn"
-            onclick="copyToClipboard('국민은행 111-11-111111')">복사</button></p>
-          <p class="mb-2">신부 아버지: 하나은행 444-44-444444 <button class="copy-btn"
-            onclick="copyToClipboard('하나은행 444-44-444444')">복사</button></p>
-          <p class="mb-2">신부 어머니: 기업은행 555-55-555555 <button class="copy-btn"
-            onclick="copyToClipboard('기업은행 555-55-555555')">복사</button></p>
+        <details>
+          <summary>신부측 – 표지선</summary>
+          <p class="mb-2">표지선: 국민은행 111-11-111111 <button class="copy-btn" onclick="copyToClipboard('국민은행 111-11-111111')">복사</button></p>
+          <p class="mb-2">신부 아버지: 하나은행 444-44-444444 <button class="copy-btn" onclick="copyToClipboard('하나은행 444-44-444444')">복사</button></p>
+          <p class="mb-2">신부 어머니: 기업은행 555-55-555555 <button class="copy-btn" onclick="copyToClipboard('기업은행 555-55-555555')">복사</button></p>
         </details>
       </div>
     </section>
 
-    <!-- ▣ 푸터 ----------------------------------------------------------- -->
+    <!-- ▣ 푸터 -->
     <footer class="fade-section py-20 px-6 text-center text-gray-600 text-sm">
-      <p>오승현 ❤ 표지선</p><p>2026.03.21 토요일 오전 11시</p>
+      <p>오승현 ❤ 표지선</p>
+      <p>2026.03.21 토요일 오전 11시</p>
       <button onclick="shareLink()" class="mt-4 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full">
-        링크 공유하기</button>
+        링크 공유하기
+      </button>
     </footer>
   </main>
 
   <script>
-  /* ---------- 1. hero 높이(카카오·iOS fix) ---------- */
-  const setVh=()=>{ document.documentElement.style.setProperty('--vh',window.innerHeight/100); };
-  setVh(); window.addEventListener('orientationchange',setVh,false);
+    // Hero 높이(카카오·iOS fix)
+    const setVh = () => document.documentElement.style.setProperty('--vh', window.innerHeight/100);
+    setVh(); window.addEventListener('orientationchange', setVh, false);
 
-  /* ---------- 2. D-Day ---------- */
-  document.addEventListener('DOMContentLoaded',()=>{
-    const today=new Date();today.setHours(0,0,0,0);
-    const d=Math.ceil((new Date('2026-03-21')-today)/864e5);
-    document.getElementById('dday').textContent=`결혼식까지 ${d>=0?d:0}일`;
-  });
+    // D-Day 계산
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date(); today.setHours(0,0,0,0);
+      const target = new Date('2026-03-21');
+      const dday = Math.ceil((target - today)/(1000*60*60*24));
+      document.getElementById('dday').textContent = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
+    });
 
-  /* ---------- 3. Scroll-in ---------- */
-  const io=new IntersectionObserver(es=>es.forEach(e=>{
-    e.target.classList.toggle('visible',e.isIntersecting);
-  }),{threshold:.15});
-  document.querySelectorAll('.fade-section').forEach(s=>io.observe(s));
+    // IntersectionObserver scroll-in
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      e.target.classList.toggle('visible', e.isIntersecting);
+    }), { threshold: 0.15 });
+    document.querySelectorAll('.fade-section').forEach(s => io.observe(s));
 
-  /* ---------- 4. 공유 & 복사 ---------- */
-  function shareLink(){
-    const data={title:'오승현 ❤ 표지선 결혼식',text:'우리의 결혼식에 초대합니다!',url:location.href};
-    navigator.share?navigator.share(data):
-      (navigator.clipboard.writeText(data.url),alert('링크가 복사되었습니다!'));
-  }
-  const copyToClipboard=t=>navigator.clipboard.writeText(t).then(()=>alert('복사되었습니다: '+t));
+    // 공유 & 복사
+    function shareLink() {
+      const data = { title: '오승현 ❤ 표지선 결혼식', text: '우리의 결혼식에 초대합니다!', url: location.href };
+      if (navigator.share) navigator.share(data);
+      else (navigator.clipboard.writeText(data.url), alert('링크가 복사되었습니다!'));
+    }
+    const copyToClipboard = t => navigator.clipboard.writeText(t).then(() => alert('복사되었습니다: '+t));
   </script>
 </body>
 </html>
