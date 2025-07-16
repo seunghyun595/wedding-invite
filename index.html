@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
 
   <!-- Tailwind CDN -->
@@ -15,10 +15,8 @@
   <meta property="og:url" content="https://seunghyun595.github.io/wedding-invite" />
 
   <style>
-    html,
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-        "맑은 고딕", "Malgun Gothic", sans-serif;
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "맑은 고딕", "Malgun Gothic", sans-serif;
       background-color: #f9fdfb;
       color: #2f3e30;
       margin: 0;
@@ -26,7 +24,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Scroll‑in base */
     .fade-section {
       opacity: 0;
       transform: translateY(60px);
@@ -39,7 +36,6 @@
       transform: translateY(0);
     }
 
-    /* Utilities */
     img {
       display: block;
       max-width: 100%;
@@ -76,7 +72,12 @@
 <body class="overflow-x-hidden">
   <!-- Cover -->
   <header class="relative h-screen flex justify-center items-center">
-    <img src="https://seunghyun595.github.io/wedding-invite/img/cover.jpg" alt="커플 사진" class="absolute inset-0 w-full h-full object-cover brightness-75 -z-[-10]" />
+    <img
+      src="https://seunghyun595.github.io/wedding-invite/img/cover.jpg"
+      alt="커플 사진"
+      class="absolute inset-0 w-full h-full object-cover brightness-75 z-[-10]"
+      style="transform: translateZ(0); will-change: transform; backface-visibility: hidden; touch-action: none;"
+    />
     <div class="relative text-center text-white px-4 z-10">
       <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
@@ -154,7 +155,6 @@
   </main>
 
   <script>
-    // D‑Day 계산
     const weddingDate = new Date("2026-03-21T00:00:00");
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -164,28 +164,21 @@
       document.getElementById('dday').innerText = `결혼식까지 ${dday >= 0 ? dday : 0}일`;
     });
 
-    // IntersectionObserver로 계단식 효과
     const fadeSections = document.querySelectorAll('.fade-section');
-    let lastY = window.scrollY;
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const goingDown = window.scrollY > lastY;
-        lastY = window.scrollY;
-
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           entry.target.style.transform = 'translateY(0)';
         } else {
           entry.target.classList.remove('visible');
-          entry.target.style.transform = `translateY(${goingDown ? 60 : -60}px)`;
+          entry.target.style.transform = 'translateY(60px)'; // 항상 아래에서 위로
         }
       });
     }, { threshold: 0.15 });
 
     fadeSections.forEach((sec) => observer.observe(sec));
 
-    // 공유
     function shareLink() {
       const shareData = {
         title: '오승현 ❤ 표지선 결혼식',
@@ -199,7 +192,6 @@
       }
     }
 
-    // 복사
     function copyToClipboard(txt) {
       navigator.clipboard.writeText(txt).then(() => alert('복사되었습니다: ' + txt));
     }
