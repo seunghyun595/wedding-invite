@@ -6,10 +6,10 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>오승현 ❤ 표지선 결혼합니다</title>
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Open Graph -->
+  <!-- OG -->
   <meta property="og:title"       content="오승현 ❤ 표지선 결혼합니다" />
   <meta property="og:description" content="2026.03.21 SAT AM 11:00 삼성 E&A 사옥" />
   <meta property="og:image"       content="https://seunghyun595.github.io/wedding-invite/img/cover.jpg" />
@@ -17,10 +17,8 @@
 
   <style>
   /* ---------- 기본 ---------- */
-  html,body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,
-                "맑은 고딕","Malgun Gothic",sans-serif;
-    background:#f9fdfb;color:#2f3e30;margin:0;padding:0;scroll-behavior:smooth}
+  html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"맑은 고딕","Malgun Gothic",sans-serif;
+            background:#f9fdfb;color:#2f3e30;margin:0;padding:0;scroll-behavior:smooth}
   img{display:block;max-width:100%;height:auto}
   .green-bg{background:#eef7f1}
 
@@ -34,12 +32,13 @@
   details[open] summary{margin-bottom:.5rem}
   .copy-btn{background:#e5e7eb;color:#374151;padding:.25rem .5rem;border-radius:.25rem;
             font-size:.875rem;margin-left:.5rem}
-  /* ---------- hero 높이 고정(주소창 변화 무시) ---------- */
-  .hero{
-    min-height:100svh;          /* 실제 화면 높이 고정 */
-    min-height:100vh;           /* Fallback */
-    background:url("https://seunghyun595.github.io/wedding-invite/img/cover.jpg") center/cover no-repeat;
-  }
+
+  /* ---------- hero 높이 : 실제 뷰포트 고정 ---------- */
+  :root{ --vh:1vh; }               /* 초기값(지원 안하는 브라우저 대비) */
+  .hero{height:calc(var(--vh)*100);           /* 모든 브라우저에서 고정 */
+        min-height:100svh;                    /* 지원 브라우저 → 소형 뷰포트 */
+        background:url("https://seunghyun595.github.io/wedding-invite/img/cover.jpg")
+                   center/cover no-repeat;}
   </style>
 </head>
 
@@ -47,7 +46,6 @@
 
   <!-- ▣ Cover ------------------------------------------------------------ -->
   <header class="hero relative flex items-center justify-center overflow-hidden">
-    <!-- 이미지가 배경으로 들어가므로 별도 <img> 없음 -->
     <div class="relative z-10 text-center text-white px-4 pointer-events-none">
       <h1 class="text-4xl md:text-5xl font-bold mb-2 drop-shadow">오승현 ❤ 표지선</h1>
       <p class="text-lg md:text-xl">2026.03.21 SAT AM 11:00</p>
@@ -131,23 +129,26 @@
   </main>
 
   <script>
-  /* D-Day */
+  /* ---------- 1. hero 높이(카카오·iOS fix) ---------- */
+  const setVh=()=>{ document.documentElement.style.setProperty('--vh',window.innerHeight/100); };
+  setVh(); window.addEventListener('orientationchange',setVh,false);
+
+  /* ---------- 2. D-Day ---------- */
   document.addEventListener('DOMContentLoaded',()=>{
     const today=new Date();today.setHours(0,0,0,0);
     const d=Math.ceil((new Date('2026-03-21')-today)/864e5);
     document.getElementById('dday').textContent=`결혼식까지 ${d>=0?d:0}일`;
   });
 
-  /* Scroll-in */
+  /* ---------- 3. Scroll-in ---------- */
   const io=new IntersectionObserver(es=>es.forEach(e=>{
     e.target.classList.toggle('visible',e.isIntersecting);
   }),{threshold:.15});
   document.querySelectorAll('.fade-section').forEach(s=>io.observe(s));
 
-  /* 공유·복사 */
+  /* ---------- 4. 공유 & 복사 ---------- */
   function shareLink(){
-    const data={title:'오승현 ❤ 표지선 결혼식',
-                text:'우리의 결혼식에 초대합니다!',url:location.href};
+    const data={title:'오승현 ❤ 표지선 결혼식',text:'우리의 결혼식에 초대합니다!',url:location.href};
     navigator.share?navigator.share(data):
       (navigator.clipboard.writeText(data.url),alert('링크가 복사되었습니다!'));
   }
